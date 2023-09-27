@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-->
+在 TestNG 的执行中，测试的级别由上至下可以分为suite -> test -> class -> method，箭头的左边元素跟右边元素的关系是一对多的包含关系。
+methods级别： 所有用例都可以再不同的线程下去执行
+classes 级别：不同 class tag 下的用例可以在不同的线程执行，相同 class tag 下的用例只能在同一个线程中执行
+tests 级别：不同 test tag 下的用例可以在不同的线程执行，相同 test tag 下的用例只能在同一个线程中执行。
+thread-count: 代表了最大并发线程数
+xml文件配置这种方式不能指定线程池，只有方法才可以指定线程池
+-->
+<suite name="multiThread" parallel="classes" thread-count="2">
+    <test name="demo1">
+        <classes>
+            <class name="com.course.testng.multiThread.MultiThreadOnXml"></class>
+        </classes>
+    </test>
+
+    <test name="demo2">
+        <classes>
+            <class name="com.course.testng.multiThread.MultiThreadOnXml"></class>
+        </classes>
+    </test>
+</suite>
